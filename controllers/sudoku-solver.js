@@ -1,6 +1,13 @@
 class SudokuSolver {
 
   validate(puzzleString) {
+    if (!puzzleString) {
+      return {
+        ok: false,
+        error: 'Required field missing'
+      };
+    }
+
     if (puzzleString.length !== 81) {
       return {
         ok: false,

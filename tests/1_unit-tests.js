@@ -24,8 +24,8 @@ suite('Unit Tests', () => {
         });
 
         test('Validate method should return an error when puzzle input string length is greater than 81', function () {
-            let invalidPuzzleString = '1.5.2.8/44..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.';
-            let validationObj = solver.validate(invalidPuzzleString);
+            const invalidPuzzleString = '1.5.2.8/44..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.';
+            const validationObj = solver.validate(invalidPuzzleString);
             assert.property(validationObj, 'ok', 'validation object should contain ok');
             assert.property(validationObj, 'error', 'validation object should contain error');
             assert.isFalse(validationObj.ok, 'Validate function should return { ok: false, ... }');
@@ -33,8 +33,8 @@ suite('Unit Tests', () => {
         });
 
         test('Validate method should return an error when puzzle input string length is less than 81', function () {
-            let invalidPuzzleString = '1.5.2.8/..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.';
-            let validationObj = solver.validate(invalidPuzzleString);
+            const invalidPuzzleString = '1.5.2.8/..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.';
+            const validationObj = solver.validate(invalidPuzzleString);
             assert.property(validationObj, 'ok', 'validation object should contain ok');
             assert.property(validationObj, 'error', 'validation object should contain error');
             assert.isFalse(validationObj.ok, 'Validate function should return { ok: false, ... }');
@@ -42,12 +42,20 @@ suite('Unit Tests', () => {
         });
 
         test('Validate method should return an error when puzzle input string contains invalid caracters', function () {
-            let invalidPuzzleString = '1.5.2.84%..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.';
-            let validationObj = solver.validate(invalidPuzzleString);
+            const invalidPuzzleString = '1.5.2.84%..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.';
+            const validationObj = solver.validate(invalidPuzzleString);
             assert.property(validationObj, 'ok', 'validation object should contain ok');
             assert.property(validationObj, 'error', 'validation object should contain error');
             assert.isFalse(validationObj.ok, 'Validate function should return { ok: false, ... }');
             assert.equal(validationObj.error, 'Invalid characters in puzzle');
+        });
+
+        test('Validate method should return an error when puzzle input string is not provided', function () {
+            const invalidPuzzleStrings = ['', null, undefined];
+            const ok = invalidPuzzleStrings.every(str => (solver.validate(str).ok));
+            const error = invalidPuzzleStrings.every(str => (solver.validate(str).error === 'Required field missing'));
+            assert.isFalse(ok, 'Validate function should return { ok: false, ... } when puzzle input string is not provided');
+            assert.isTrue(error, "Validate function should return { error: 'Required field missing', ... } when puzzle input string is not provided");
         });
 
     });
