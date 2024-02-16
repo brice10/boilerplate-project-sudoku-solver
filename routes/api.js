@@ -33,7 +33,7 @@ module.exports = function (app) {
             conflict.push('row');
           }
           if (!colPlacementChecked) {
-            conflict.push('col');
+            conflict.push('column');
           }
           if (!regionPlacementChecked) {
             conflict.push('region');

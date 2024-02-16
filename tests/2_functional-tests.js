@@ -183,7 +183,7 @@ suite('Functional Tests', function () {
                     assert.isArray(resBody.conflict);
                     assert.equal(resBody.conflict.length, 2);
                     assert.equal(resBody.conflict[0], 'row');
-                    assert.equal(resBody.conflict[1], 'col');
+                    assert.equal(resBody.conflict[1], 'column');
                     done();
                 });
         });
@@ -210,7 +210,7 @@ suite('Functional Tests', function () {
                     assert.isArray(resBody.conflict);
                     assert.equal(resBody.conflict.length, 3);
                     assert.equal(resBody.conflict[0], 'row');
-                    assert.equal(resBody.conflict[1], 'col');
+                    assert.equal(resBody.conflict[1], 'column');
                     assert.equal(resBody.conflict[2], 'region');
                     done();
                 });
