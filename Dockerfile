@@ -1,0 +1,14 @@
+FROM node:16
+
+COPY . /app
+WORKDIR /app
+RUN npm install
+
+ARG PORT
+ENV PORT=$PORT
+
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
+
+EXPOSE $PORT
+CMD ["npm", "start"]

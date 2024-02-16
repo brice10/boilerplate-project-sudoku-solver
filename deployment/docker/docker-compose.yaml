@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  boilerplate-sudoku-solver-api:
+    build:
+      context: ../..
+      dockerfile: ./Dockerfile
+      args:
+        - PORT=${PORT}
+        - NODE_ENV=${NODE_ENV}
+    ports:
+      - ${PORT}:${PORT}
+    restart: unless-stopped

@@ -29,7 +29,7 @@ function fillpuzzle(data) {
 
 async function getSolved() {
   const stuff = {"puzzle": textArea.value}
-  const data = await fetch("/api/solve", {
+  const data = await fetch("api/solve", {
     method: "POST",
     headers: {
       "Accept": "application/json",
@@ -47,7 +47,7 @@ async function getSolved() {
 
 async function getChecked() {
   const stuff = {"puzzle": textArea.value, "coordinate": coordInput.value, "value": valInput.value}
-    const data = await fetch("/api/check", {
+    const data = await fetch("api/check", {
     method: "POST",
     headers: {
       "Accept": "application/json",
