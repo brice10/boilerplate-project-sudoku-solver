@@ -24,12 +24,9 @@ module.exports = function (app) {
           const col = coordinate.charAt(1);
           let valid = true;
           const puzzleString = checkSinglePlacement(puzzle, row, col, value);
-          if (puzzleString) {
-            puzzle = puzzleString;
-          }
-          const rowPlacementChecked = solver.checkRowPlacement(puzzle, row, col, value);
-          const colPlacementChecked = solver.checkColPlacement(puzzle, row, col, value);
-          const regionPlacementChecked = solver.checkRegionPlacement(puzzle, row, col, value);
+          const rowPlacementChecked = solver.checkRowPlacement(puzzleString, row, col, value);
+          const colPlacementChecked = solver.checkColPlacement(puzzleString, row, col, value);
+          const regionPlacementChecked = solver.checkRegionPlacement(puzzleString, row, col, value);
           if (!rowPlacementChecked || !colPlacementChecked || !regionPlacementChecked) {
             valid = false;
           }
