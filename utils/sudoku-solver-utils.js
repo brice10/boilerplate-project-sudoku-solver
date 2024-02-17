@@ -60,6 +60,8 @@ export const checkSinglePlacement = (puzzleString, row, column, value) => {
 
     if (grid[rowIndex][colIndex] === value) {
         grid[rowIndex][colIndex] = 0;
-        puzzleString = gridToPuzzleString(grid);
+        return gridToPuzzleString(grid);
     }
+
+    return false;
   }

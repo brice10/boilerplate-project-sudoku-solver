@@ -23,7 +23,10 @@ module.exports = function (app) {
           const row = coordinate.charAt(0);
           const col = coordinate.charAt(1);
           let valid = true;
-          checkSinglePlacement(puzzle, row, col, value);
+          const puzzleString = checkSinglePlacement(puzzle, row, col, value);
+          if (puzzleString) {
+            puzzle = puzzleString;
+          }
           const rowPlacementChecked = solver.checkRowPlacement(puzzle, row, col, value);
           const colPlacementChecked = solver.checkColPlacement(puzzle, row, col, value);
           const regionPlacementChecked = solver.checkRegionPlacement(puzzle, row, col, value);
