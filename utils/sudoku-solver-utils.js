@@ -58,7 +58,7 @@ export const checkSinglePlacement = (puzzleString, row, column, value) => {
     const colIndex = parseInt(column, 10) - 1;
     value = parseInt(value, 10);
 
-    if (grid[rowIndex][colIndex] !== value) {
+    if (grid[rowIndex][colIndex] === value) {
         grid[rowIndex][colIndex] = 0;
         puzzleString = gridToPuzzleString(grid);
     }
