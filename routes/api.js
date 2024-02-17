@@ -1,7 +1,7 @@
 'use strict';
 
 const SudokuSolver = require('../controllers/sudoku-solver.js');
-const { isCharacterInRange, isNumberInRange } = require('../utils/sudoku-solver-utils.js');
+const { isCharacterInRange, isNumberInRange, puzzleStringToGrid, checkSinglePlacement } = require('../utils/sudoku-solver-utils.js');
 
 module.exports = function (app) {
 
@@ -23,6 +23,7 @@ module.exports = function (app) {
           const row = coordinate.charAt(0);
           const col = coordinate.charAt(1);
           let valid = true;
+          checkSinglePlacement(puzzle, row, col, value);
           const rowPlacementChecked = solver.checkRowPlacement(puzzle, row, col, value);
           const colPlacementChecked = solver.checkColPlacement(puzzle, row, col, value);
           const regionPlacementChecked = solver.checkRegionPlacement(puzzle, row, col, value);

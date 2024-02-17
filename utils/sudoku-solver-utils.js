@@ -51,3 +51,15 @@ export const isNumberInRange = (number) => {
     const pattern = `^[${puzzleSettings.minValue}-${puzzleSettings.maxValue}]$`;
     return new RegExp(pattern).test(number);
 }
+
+export const checkSinglePlacement = (puzzleString, row, column, value) => {
+    const grid = puzzleStringToGrid(puzzleString);
+    const rowIndex = rowsLetterToNumber(row) - 1;
+    const colIndex = parseInt(column, 10) - 1;
+    value = parseInt(value, 10);
+
+    if (grid[rowIndex][colIndex] !== value) {
+        grid[rowIndex][colIndex] = 0;
+        puzzleString = gridToPuzzleString(grid);
+    }
+  }
